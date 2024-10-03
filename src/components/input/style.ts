@@ -16,15 +16,19 @@ export const CustomInput = styled.input`
 `
 
 export const LeftIcon = styled.div`
+  display: flex;
   position: absolute;
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
+  cursor: pointer;
 `
 
 export const RightIcon = styled.div`
+  display: flex;
   position: absolute;
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
+  cursor: pointer;
 `

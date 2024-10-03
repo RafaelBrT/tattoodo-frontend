@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SignInWrapper = styled.div`
-  width: 50%;
+  width: 80%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -12,13 +12,26 @@ export const SignInWrapper = styled.div`
   background-color: #fff;
   position: absolute;
   transition: all 0.6s ease-in-out;
-
   left: 0;
   z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
   &.active {
     transform: translateX(100%);
     opacity: 0;
     z-index: 1;
+  }
+  p > span {
+    color: #31A2C6;
+    cursor: pointer;
+  }
+  @media screen and (min-width: 992px) {
+    width: 50%;
+    top: unset;
+    left: unset;
+    transform: unset;
   }
 `
 

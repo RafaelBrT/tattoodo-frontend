@@ -1,5 +1,6 @@
 'use client'
 import { useForm } from "react-hook-form";
+import { MdOutlinePerson, MdLockOutline, MdOutlineMail } from "react-icons/md";
 
 import Logo from "../logo"
 import Button from "../button";
@@ -19,7 +20,7 @@ const SignUp = ({ changeSignupActive, signupActive }: SignUpProps) => {
     <SignUpWrapper className={signupActive ? 'active' : ''}>
       <Logo />
       <p>Sign in</p>
-      <p onClick={() => changeSignupActive(false)}>Já tem uma conta? Faça login.</p>
+      <p onClick={() => changeSignupActive(false)}>Já tem uma conta? <span>Faça login.</span></p>
 
       <SignUpForm>
         <InputSeparator>
@@ -27,6 +28,8 @@ const SignUp = ({ changeSignupActive, signupActive }: SignUpProps) => {
           <Input
             id="fullname"
             type="text"
+            leftIcon={<MdOutlinePerson />}
+            placeholder="Digite seu nome completo"
             {...register('fullname')}
           />
         </InputSeparator>
@@ -35,6 +38,8 @@ const SignUp = ({ changeSignupActive, signupActive }: SignUpProps) => {
           <Input
             id="email"
             type="text"
+            leftIcon={<MdOutlineMail />}
+            placeholder="Digite seu e-mail"
             {...register('email')}
           />
         </InputSeparator>
@@ -43,12 +48,14 @@ const SignUp = ({ changeSignupActive, signupActive }: SignUpProps) => {
           <Input
             id="password"
             type="password"
+            leftIcon={<MdLockOutline />}
+            placeholder="Digite sua senha"
             {...register('password')}
           />
         </InputSeparator>
         <PasswordForgotten>
           <p>Checkbox</p>
-          <p>Esqueçeu a senha?</p>
+          <p><span>Esqueçeu a senha?</span></p>
         </PasswordForgotten>
       </SignUpForm>
       <Button text="Cadastrar" />

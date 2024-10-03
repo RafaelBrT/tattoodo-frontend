@@ -18,10 +18,11 @@ export const CenterPage = styled.div`
   height: fit-content;
   background-color: #fff;
   position: relative;
-  height: 60%;
+  height: 80vh;
 `
 
 export const LoginBackground = styled.div`
+  display: none;
   position: absolute;
   width: 50%;
   height: 100%;
@@ -37,5 +38,9 @@ export const LoginBackground = styled.div`
   }
   &.active {
     transform: translateX(-100%);
+  }
+
+  @media screen and (min-width: 992px) {
+    display: block;
   }
 `

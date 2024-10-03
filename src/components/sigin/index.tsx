@@ -1,6 +1,8 @@
 'use client'
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { MdOutlinePerson, MdLockOutline } from "react-icons/md";
+import { MdOutlineMail, MdLockOutline } from "react-icons/md";
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
 import Logo from "../logo"
 import Button from "../button";
@@ -15,12 +17,19 @@ interface SignInProps {
 
 const SignIn = ({ changeSignupActive, signupActive }: SignInProps) => {
   const { register } = useForm();
+  const [showPassword, setShowPassword] = useState(false)
+
+  const renderPasswordIcon = () => {
+    return showPassword ?
+      <IoMdEyeOff onClick={() => setShowPassword(!showPassword)} />
+      : <IoMdEye onClick={() => setShowPassword(!showPassword)} />
+  }
 
   return (
     <SignInWrapper className={signupActive ? 'active' : ''}>
       <Logo />
       <p>Sign in</p>
-      <p onClick={() => changeSignupActive(true)}>Não tem uma conta? Faça uma agora.</p>
+      <p onClick={() => changeSignupActive(true)}>Não tem uma conta? <span>Faça uma agora.</span></p>
 
       <SignInForm>
         <InputSeparator>
@@ -28,7 +37,8 @@ const SignIn = ({ changeSignupActive, signupActive }: SignInProps) => {
           <Input
             id="login"
             type="text"
-            leftIcon={<MdOutlinePerson />}
+            leftIcon={<MdOutlineMail />}
+            placeholder="Digite seu e-mail"
             {...register('login')}
           />
         </InputSeparator>
@@ -36,14 +46,16 @@ const SignIn = ({ changeSignupActive, signupActive }: SignInProps) => {
           <label htmlFor="password">Senha</label>
           <Input
             id="password"
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             leftIcon={<MdLockOutline />}
-            {...register('login')}
+            rightIcon={renderPasswordIcon()}
+            placeholder="Digite sua senha"
+            {...register('password')}
           />
         </InputSeparator>
         <PasswordForgotten>
           <p>Checkbox</p>
-          <p>Esqueçeu a senha?</p>
+          <p><span>Esqueçeu a senha?</span></p>
         </PasswordForgotten>
       </SignInForm>
       <Button text="Entrar" />
